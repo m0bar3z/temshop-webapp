@@ -14,7 +14,7 @@ function App() {
         <Route path="/" element={<Main />} />
         <Route path="*" element={
           <main>
-            <p>there is nothing here</p>
+            <p>صفحه مورد نظر پیدا نشد</p>
           </main>
         }/>
       </Routes>
