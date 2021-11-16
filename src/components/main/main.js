@@ -5,7 +5,7 @@ export const Main = () => {
     return (
         <>
             <MainNavbar />
-            <div>به فروشگاه تم خوش آمدید</div>
+            <div className="text-center mt-5">به فروشگاه تم خوش آمدید</div>
         </>
     )
 }
