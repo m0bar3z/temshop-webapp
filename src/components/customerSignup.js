@@ -105,7 +105,7 @@ export const CustomerSignup = (props) => {
                                         placeholder="رمز عبور خود را دوباره وارد کنید" 
                                         onChange={handleChange} 
                                         isValid = {password === dupPassword && dupPassword.length && validated && true}
-                                        isInvalid = {password != dupPassword && validated && true}
+                                        isInvalid = {password !== dupPassword && validated && true}
                                         required
                                     />
                                 </Form.Group>
