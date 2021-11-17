@@ -4,10 +4,10 @@ import { CustomerSignup } from './customerSignup';
 
 export const LoginModal = (props) => {
 
-  const [loginShow, setLoginShow] = useState(false)
+  const [registerShow, setRegisterShow] = useState(false)
 
-  let signupModal = () => {
-    setLoginShow(true)
+  let registerModal = () => {
+    setRegisterShow(true)
     props.onHide()
   }
 
@@ -35,12 +35,12 @@ export const LoginModal = (props) => {
           </Row>
         </Modal.Body>
         <Modal.Footer>
-          <Button className="btn-success" onClick={signupModal}>ثبت نام</Button>
+          <Button className="btn-success" onClick={registerModal}>ثبت نام</Button>
           <Button className="btn-danger" onClick={props.onHide}>بستن</Button>
         </Modal.Footer>
       </Modal>
 
-      <CustomerSignup show={loginShow} onHide={() => setLoginShow(false)}/>
+      <CustomerSignup show={registerShow} onHide={() => setRegisterShow(false)}/>
     </>
   );
 }

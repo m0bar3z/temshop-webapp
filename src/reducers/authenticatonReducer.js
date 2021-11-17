@@ -27,3 +27,25 @@ export function authentication(state = initialState, action) {
             return state
     }
 }
+
+export function register(state = initialState, action) {
+    switch (action.type) {
+        case customerConstants.REGISTER_REQUEST:
+            return {
+                loading: true,
+                user: action.user
+            }
+        case customerConstants.REGISTER_SUCCESS:
+            return {
+                loading: false,
+                user: action.user
+            }
+        case customerConstants.REGISTER_FAILURE:
+            return {
+                loading: false,
+                error: action.error
+            }
+        default:
+            return state;
+    }
+}
