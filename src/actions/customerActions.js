@@ -1,5 +1,6 @@
 import { customerConstants } from '../constants/customerConstants'
 import { customerService } from '../services'
+import { alertActions } from '.'
 
 export const customerActions = {
     register
@@ -11,32 +12,31 @@ function register(body) {
 
         customerService.register(body)
             .then(customer => {
-                console.log('customer into customerAction')
+                console.log('customer into customerAction >>')
                 console.log(customer)
 
                 if(customer === undefined) {
-                    // dispatch alert
+                    dispatch(alertActions.error('ارتباط با سرور برفرار نیست!'))
                     dispatch(failure('ارتباط با سرور برقرار نیست. ثبت نام ناموفق!'))
                 }
                 else if(customer.success) {
-
                     console.log('customer registered')
                     dispatch(success(customer))
-                    //dispatch alert 
+                    dispatch(alertActions.success(customer.message))
 
                     setTimeout(() => {
                         console.log('history.push')
                     }, 1500);
 
                 } else if(!customer.success) {
-                    //dispatch alert
+                    dispatch(alertActions.error(customer.message))
                     dispatch(failure(customer.message))
                 } else {
-                    // dispatch alert
+                    dispatch(alertActions.error('مشکلی وجود دارد'))
                     dispatch(failure('مشکلی وجود دارد!'))
                 }
                 setTimeout(() => {
-                    // dispatch clear alert actions
+                    dispatch(alertActions.clear())
                 }, 1500);
             })
             .catch(error => {

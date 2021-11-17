@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Modal, Button, Form, Row, Col } from 'react-bootstrap'
+import { Modal, Button, Form, Row, Col, Alert } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 import { customerActions } from '../actions'
 import { useDispatch, useSelector } from 'react-redux'
@@ -134,6 +134,12 @@ export const CustomerSignup = (props) => {
                     </Row>
                 </Modal.Body>
                 <Modal.Footer>
+                {
+                    test.alert.message &&
+                    <Alert variant={test.alert.type}>
+                        {test.alert.message}
+                    </Alert>
+                }
                     <Button className="btn-danger" onClick={props.onHide}>بستن</Button>
                 </Modal.Footer>
             </Modal>

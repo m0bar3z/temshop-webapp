@@ -8,7 +8,8 @@ export const customerService = {
 function register(body) {
     return axios.post(`${SERVER_URL}/customer/v1`, body)
         .then(res => {
-            console.log(`res.customer >> ${res.data.data}`)
+            console.log(`res.customer >> `)
+            console.log(res.data.data)
             localStorage.setItem('user', JSON.stringify(res.data.data))
             return res.data
         })
