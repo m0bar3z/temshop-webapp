@@ -1,12 +1,12 @@
 import axios from 'axios'
 import { SERVER_URL } from '../config'
 
-export const userService = {
+export const customerService = {
     register
 }
 
 function register(body) {
-    return axios.post(`${SERVER_URL}/customer/v1`)
+    return axios.post(`${SERVER_URL}/customer/v1`, body)
         .then(res => {
             console.log(`res.customer >> ${res.data.data}`)
             localStorage.setItem('user', JSON.stringify(res.data.data))

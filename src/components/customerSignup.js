@@ -1,11 +1,15 @@
 import { useState } from 'react'
 import { Modal, Button, Form, Row, Col } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
+import { customerActions } from '../actions'
+import { useDispatch, useSelector } from 'react-redux'
 
 export const CustomerSignup = (props) => {
     const [inputs, setInputs] = useState({ username: '', password: '', dupPassword: '', mobile: '' })
     const [validated, setValidated] = useState(false)
     const { username, password, dupPassword, mobile } = inputs
+    let dispatch = useDispatch()
+    let test = useSelector(state => state)
 
     const mobileHandler = value => {
         value = value.trim()
@@ -47,13 +51,15 @@ export const CustomerSignup = (props) => {
         console.log(inputs)
 
         username && password === dupPassword && mobile 
-        ? console.log('time for calling api') 
+        ? dispatch(customerActions.register(user))
         : setValidated(true)
         
     }
 
     return (
         <>
+        {console.log('this is useSelector: >>')}
+        {console.log(test)}
             <Modal
             {...props}
             size="lg"
