@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { Modal, Button, Form, Row, Col, Alert } from 'react-bootstrap'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { customerActions } from '../actions'
 import { useDispatch, useSelector } from 'react-redux'
 
@@ -9,7 +9,15 @@ export const CustomerSignup = (props) => {
     const [validated, setValidated] = useState(false)
     const { username, password, dupPassword, mobile } = inputs
     let dispatch = useDispatch()
+    let navigate = useNavigate()
+
     let test = useSelector(state => state)
+    
+    if(test.alert.type === "success") {
+        setTimeout(() => {
+            navigate('panel')
+        }, 1500);
+    }
 
     const mobileHandler = value => {
         value = value.trim()
@@ -136,7 +144,7 @@ export const CustomerSignup = (props) => {
                 <Modal.Footer>
                 {
                     test.alert.message &&
-                    <Alert variant={test.alert.type}>
+                    <Alert className="m-auto w-75 text-center" variant={test.alert.type}>
                         {test.alert.message}
                     </Alert>
                 }

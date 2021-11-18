@@ -6,7 +6,7 @@ export function alert(state = initialState, action) {
     switch (action.type) {
         case alertConstants.SUCCESS:
             return {
-                type: 'sucess',
+                type: 'success',
                 message: action.message
             }
         case alertConstants.ERROR:
