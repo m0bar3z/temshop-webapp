@@ -15,7 +15,7 @@ export const CustomerSignup = (props) => {
     
     if(test.alert.type === "success") {
         setTimeout(() => {
-            navigate('panel')
+            navigate('customer/panel')
         }, 1500);
     }
 
