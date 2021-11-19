@@ -1,7 +1,7 @@
 import { Modal, Form, Button, Alert } from 'react-bootstrap'
 import { useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-
+import { sellerActions } from '../actions'
 
 export const SellerLogin = props => {
 
@@ -38,7 +38,7 @@ export const SellerLogin = props => {
     const formHandler = e => {
         e.preventDefault()
         username && password
-        ? console.log('call seller login api')
+        ? dispatch(sellerActions.login(inputs))
         : setValidated(true) 
 
     }
