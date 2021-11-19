@@ -1,11 +1,16 @@
-import { Modal, Button, Form, Row, Col, Alert } from "react-bootstrap"
+import { Modal, Button, Form, Alert } from "react-bootstrap"
 import { useState } from "react"
+import { useDispatch, useSelector } from "react-redux"
+import { customerActions } from "../actions"
 
 export const CustomerLogin = props => {
     const [validated, setValidated] = useState(false)
     const [inputs, setInputs] = useState({ username: '', password: '' })
     const { username, password } = inputs
- 
+    const dispatch = useDispatch()
+
+    let alert = useSelector(state => state.alert)
+
     const passwordHandler = value => {
         let hasMinLength =  value.length > 4 ? value : false
 
@@ -32,7 +37,7 @@ export const CustomerLogin = props => {
     const formHandler = e => {
         e.preventDefault()
         username && password
-        ? console.log('time for API calling')
+        ? dispatch(customerActions.login(inputs))
         : setValidated(true) 
 
     }
@@ -80,6 +85,12 @@ export const CustomerLogin = props => {
                 </Form>
             </Modal.Body>
             <Modal.Footer>
+                {
+                    alert.message &&
+                    <Alert className="m-auto w-75 text-center" variant={alert.type}>
+                        {alert.message}
+                    </Alert> 
+                }
                 <Button variant="danger" onClick={props.onHide}>بستن</Button>
             </Modal.Footer>
         </Modal>
