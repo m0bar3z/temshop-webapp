@@ -1,10 +1,17 @@
 import { useState } from 'react'
 import { Modal, Button, Row, Col } from 'react-bootstrap'
 import { CustomerSignup } from './customerSignup';
+import { CustomerLogin } from './customerLogin';
 
 export const LoginModal = (props) => {
 
   const [registerShow, setRegisterShow] = useState(false)
+  const [customerLoginShow, setCustomerLoginShow] = useState(false)
+
+  let CustomerLoginModal = () => {
+    setCustomerLoginShow(true)
+    props.onHide()
+  }
 
   let registerModal = () => {
     setRegisterShow(true)
@@ -25,7 +32,7 @@ export const LoginModal = (props) => {
         <Modal.Body>
           <Row>
             <Col className="col-lg-6 m-auto">
-              <Button className="w-100">مشتری</Button>
+              <Button className="w-100" onClick={CustomerLoginModal}>مشتری</Button>
             </Col>
           </Row>
           <Row className="mt-3">
@@ -41,6 +48,7 @@ export const LoginModal = (props) => {
       </Modal>
 
       <CustomerSignup show={registerShow} onHide={() => setRegisterShow(false)}/>
+      <CustomerLogin show={customerLoginShow} onHide={() => setCustomerLoginShow(false)} />
     </>
   );
 }
