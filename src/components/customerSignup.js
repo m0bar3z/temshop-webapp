@@ -13,7 +13,7 @@ export const CustomerSignup = (props) => {
 
     let test = useSelector(state => state)
     
-    if(test.alert.type === "success") {
+    if(test.alert.type === "success" && props.show) {
         setTimeout(() => {
             navigate('customer/panel')
         }, 1500);

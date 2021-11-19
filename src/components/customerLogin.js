@@ -1,5 +1,6 @@
 import { Modal, Button, Form, Alert } from "react-bootstrap"
 import { useState } from "react"
+import { useNavigate } from "react-router-dom"
 import { useDispatch, useSelector } from "react-redux"
 import { customerActions } from "../actions"
 
@@ -8,8 +9,15 @@ export const CustomerLogin = props => {
     const [inputs, setInputs] = useState({ username: '', password: '' })
     const { username, password } = inputs
     const dispatch = useDispatch()
+    const navigate = useNavigate()
 
     let alert = useSelector(state => state.alert)
+
+    if(alert.type === "success" && props.show) {
+        setTimeout(() => {
+            navigate('customer/panel')
+        }, 1500);
+    }
 
     const passwordHandler = value => {
         let hasMinLength =  value.length > 4 ? value : false

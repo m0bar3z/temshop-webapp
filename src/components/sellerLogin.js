@@ -1,5 +1,6 @@
 import { Modal, Form, Button, Alert } from 'react-bootstrap'
 import { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
 import { sellerActions } from '../actions'
 
@@ -9,8 +10,15 @@ export const SellerLogin = props => {
     const [inputs, setInputs] = useState({ username: '', password: '' })
     const { username, password } = inputs
     const dispatch = useDispatch()
+    const navigate = useNavigate()
 
     let alert = useSelector(state => state.alert)
+
+    if(alert.type === "success" && props.show) {
+        setTimeout(() => {
+            navigate('seller/panel')
+        }, 1500);
+    }
 
     const passwordHandler = value => {
         let hasMinLength =  value.length > 4 ? value : false
