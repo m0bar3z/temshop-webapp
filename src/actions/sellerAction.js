@@ -10,10 +10,10 @@ function login(body) {
 
     return dispatch => {
         dispatch(request(body))
-        
+     
         sellerService.login(body)
             .then(response => {
-                console.log('response from customer action >>')
+                console.log('response from seller action >>')
                 console.log(response)
 
                 if(response === undefined) {

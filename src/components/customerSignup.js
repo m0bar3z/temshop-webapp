@@ -66,8 +66,6 @@ export const CustomerSignup = (props) => {
 
     return (
         <>
-        {console.log('this is useSelector: >>')}
-        {console.log(test)}
             <Modal
             {...props}
             size="lg"
