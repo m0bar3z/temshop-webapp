@@ -97,7 +97,6 @@ function login(body) {
 }
 
 function logout() {
-    <Navigate to="/"/>
     console.log('into logout')
     customerService.logout()
     return {

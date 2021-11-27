@@ -1,17 +1,20 @@
 import { Nav, Navbar, Container, NavDropdown } from 'react-bootstrap'
 import { useDispatch, useSelector } from 'react-redux'
 import { customerActions, sellerActions } from '../../actions'
+import { useNavigate } from 'react-router'
 
 export const UserNavbar = () => {
     
     let dispatch = useDispatch()
-
+    let navigate = useNavigate()
     let authUser = useSelector(state => state.authentication)
     
     const logoutHandler = () => {
-        console.log('logout time')
         authUser && authUser.loggedIn 
             && authUser.user.position === 1 && dispatch(customerActions.logout()) 
+        
+        authUser && authUser.loggedIn
+            && authUser.user.position === 2 && dispatch(sellerActions.logout())
     }    
 
     return (
@@ -31,7 +34,10 @@ export const UserNavbar = () => {
                         <NavDropdown title="username">
                             <NavDropdown.Item href="#action3">تنظیمات</NavDropdown.Item>
                             <NavDropdown.Divider />
-                            <NavDropdown.Item  onClick={logoutHandler}>
+                            <NavDropdown.Item onClick={() => {
+                                logoutHandler()
+                                navigate('/')
+                            }}>
                                 خروج
                             </NavDropdown.Item>
                         </NavDropdown>

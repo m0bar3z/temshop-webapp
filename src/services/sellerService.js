@@ -2,7 +2,8 @@ import axios from 'axios'
 import { SERVER_URL } from '../config'
 
 export const sellerService = {
-    login
+    login,
+    logout
 }
 
 function login(body) {
@@ -20,4 +21,8 @@ function login(body) {
             }
             return error
         })
+}
+
+function logout() {
+    localStorage.removeItem('user')
 }

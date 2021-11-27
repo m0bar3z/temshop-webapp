@@ -3,7 +3,8 @@ import { sellerService } from "../services";
 import { sellerConstants } from "../constants";
 
 export const sellerActions = {
-    login
+    login,
+    logout
 }
 
 function login(body) {
@@ -45,4 +46,11 @@ function login(body) {
     function request(user) { console.log('into request'); return { type: sellerConstants.LOGIN_REQUEST, user }}
     function success(user) { console.log('into success'); return { type: sellerConstants.LOGIN_SUCCESS, user }}
     function failure(error) { console.log('into failure'); return { type: sellerConstants.LOGIN_FAILURE, error } }
+}
+
+function logout () {
+    sellerService.logout()
+    return {
+        type: sellerConstants.LOGOUT
+    }
 }
