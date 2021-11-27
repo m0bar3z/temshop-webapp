@@ -1,10 +1,12 @@
 import { customerConstants } from '../constants/customerConstants'
 import { customerService } from '../services'
 import { alertActions } from '.'
+import { Navigate } from 'react-router-dom'
 
 export const customerActions = {
     register,
-    login
+    login,
+    logout
 }
 
 function register(body) {
@@ -92,4 +94,13 @@ function login(body) {
     function request(user) { console.log('into request'); return { type: customerConstants.LOGIN_REQUEST, user }}
     function success(user) { console.log('into success'); return { type: customerConstants.LOGIN_SUCCESS, user }}
     function failure(error) { console.log('into error'); return { type: customerConstants.LOGIN_FAILURE, error }}
+}
+
+function logout() {
+    <Navigate to="/"/>
+    console.log('into logout')
+    customerService.logout()
+    return {
+        type: customerConstants.LOGOUT 
+    }
 }

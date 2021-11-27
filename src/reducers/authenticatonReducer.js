@@ -17,6 +17,7 @@ export function authentication(state = initialState, action) {
         case customerConstants.LOGIN_REQUEST:
         case sellerConstants.LOGIN_REQUEST:
             return {
+                ...state,
                 loggedIn: false,
                 loading: true,
                 user: action.user
@@ -24,6 +25,7 @@ export function authentication(state = initialState, action) {
         case customerConstants.LOGIN_SUCCESS:
         case sellerConstants.LOGIN_SUCCESS:
             return {
+                ...state,
                 loggedIn: true,
                 loading: false,
                 user: action.user
@@ -31,12 +33,16 @@ export function authentication(state = initialState, action) {
         case customerConstants.LOGIN_FAILURE:
         case sellerConstants.LOGIN_FAILURE: 
             return {
+                ...state,
                 loggedIn: false,
                 loading: false,
             }
         case customerConstants.LOGOUT:
         case sellerConstants.LOGOUT: 
-            return {}
+            return {
+                loggedIn: false,
+                loading: false
+            }
         default:
             return state
     }

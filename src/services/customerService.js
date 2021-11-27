@@ -3,7 +3,8 @@ import { SERVER_URL } from '../config'
 
 export const customerService = {
     register,
-    login
+    login,
+    logout
 }
 
 function register(body) {
@@ -41,4 +42,9 @@ function login(body) {
 
             return error
         })
+}
+
+function logout() {
+    console.log('logout service')
+    localStorage.removeItem('user')
 }

@@ -6,11 +6,12 @@ import { UserNavbar } from './userNavbar'
 export const Main = () => {
 
     let user = useSelector(state => state.authentication)
+    let alert = useSelector(state => state.alert)
 
     return (
         <>
             {
-                user.loggedIn 
+                user.loggedIn && !Object.keys(alert).length
                 ? <UserNavbar />
                 : <MainNavbar /> 
             }
