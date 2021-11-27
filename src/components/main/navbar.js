@@ -11,9 +11,9 @@ export const MainNavbar = () => {
     return (
         <>
             <Navbar className="bg-success h5"  expand="lg">
-                <Container fluid className="mx-6">
+                <Container fluid className="mx-6 my-3">
                     <Navbar.Brand href="#home" className="text-dark h1">
-                        <img src={mainLogo} alt="brand-logo" height="40px" />
+                        <img src={mainLogo} alt="brand-logo" height="10px" />
                     </Navbar.Brand>
                     <Nav>
                         <Nav.Link href="#home" className="text-dark">
